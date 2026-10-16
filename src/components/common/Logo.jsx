@@ -31,7 +31,7 @@ export default function Logo({ variant = 'default', className = '' }) {
       aria-label={`${brand.name} - Home`}
     >
       <span
-        className={`font-serif tracking-[0.18em] uppercase transition-colors duration-300 font-medium text-lg sm:text-xl md:text-2xl ${
+        className={`font-serif tracking-[0.15em] uppercase transition-colors duration-300 font-medium text-base sm:text-lg lg:text-xl whitespace-nowrap ${
           isLight
             ? 'text-[var(--color-ivory)] group-hover:text-[var(--color-gold-muted)]'
             : 'text-[var(--color-espresso)] group-hover:text-[var(--color-walnut)]'
@@ -40,7 +40,7 @@ export default function Logo({ variant = 'default', className = '' }) {
         {brand.primaryText || 'RADHA SWAMI'}
       </span>
       <span
-        className={`text-[0.62rem] sm:text-[0.68rem] font-sans font-medium uppercase tracking-[0.38em] transition-colors duration-300 -mt-0.5 sm:-mt-1 ${
+        className={`text-[0.55rem] sm:text-[0.62rem] font-sans font-medium uppercase tracking-[0.34em] transition-colors duration-300 -mt-0.5 whitespace-nowrap ${
           isLight
             ? 'text-[var(--color-gold-muted)]'
             : 'text-[var(--color-gold)]'

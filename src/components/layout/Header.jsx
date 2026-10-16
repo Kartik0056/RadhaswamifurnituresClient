@@ -48,7 +48,7 @@ export default function Header() {
   useBodyScrollLock(mobileMenuOpen);
 
   const navLinkClass = ({ isActive }) =>
-    `text-xs lg:text-sm font-medium tracking-[0.08em] uppercase transition-colors duration-200 py-2 relative hover:text-[var(--color-espresso)] ${
+    `inline-flex items-center text-[11px] xl:text-[12.5px] font-medium tracking-[0.06em] uppercase whitespace-nowrap transition-colors duration-200 py-1.5 relative hover:text-[var(--color-espresso)] flex-shrink-0 select-none ${
       isActive
         ? 'text-[var(--color-espresso)] font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[var(--color-gold)]'
         : 'text-[var(--color-stone)]'
@@ -59,11 +59,11 @@ export default function Header() {
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           isScrolled
-            ? 'bg-[var(--color-ivory)]/95 backdrop-blur-md shadow-sm border-b border-[var(--color-sand)]/60 py-3'
-            : 'bg-[var(--color-ivory)] border-b border-[var(--color-sand)]/30 py-4 lg:py-5'
+            ? 'bg-[var(--color-ivory)]/95 backdrop-blur-md shadow-sm border-b border-[var(--color-sand)]/60 py-2.5 sm:py-3'
+            : 'bg-[var(--color-ivory)] border-b border-[var(--color-sand)]/30 py-3 sm:py-4'
         }`}
       >
-        <div className="container-luxury flex items-center justify-between gap-4">
+        <div className="container-luxury flex items-center justify-between gap-3 xl:gap-6">
           {/* Mobile Menu Button */}
           <button
             type="button"
@@ -80,7 +80,7 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+          <nav className="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-6 flex-shrink-0">
             <NavLink to="/" end className={navLinkClass}>
               Home
             </NavLink>
@@ -93,16 +93,16 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => setCategoriesOpen(!categoriesOpen)}
-                className={`flex items-center gap-1 text-xs lg:text-sm font-medium tracking-[0.08em] uppercase transition-colors duration-200 py-2 ${
+                className={`inline-flex items-center gap-1 text-[11px] xl:text-[12.5px] font-medium tracking-[0.06em] uppercase whitespace-nowrap transition-colors duration-200 py-1.5 flex-shrink-0 select-none ${
                   categoriesOpen || location.pathname.startsWith('/shop/')
                     ? 'text-[var(--color-espresso)] font-semibold'
                     : 'text-[var(--color-stone)] hover:text-[var(--color-espresso)]'
                 }`}
                 aria-expanded={categoriesOpen}
               >
-                Categories
+                <span>Categories</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  className={`w-3 h-3 transition-transform duration-200 ${
                     categoriesOpen ? 'rotate-180 text-[var(--color-gold)]' : ''
                   }`}
                 />
@@ -175,21 +175,21 @@ export default function Header() {
           </nav>
 
           {/* Right Header Utilities: Search, Enquire CTA */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="p-2 text-[var(--color-espresso)] hover:text-[var(--color-walnut)] transition-colors rounded-full hover:bg-[var(--color-cream)]"
+              className="p-1.5 xl:p-2 text-[var(--color-espresso)] hover:text-[var(--color-walnut)] transition-colors rounded-full hover:bg-[var(--color-cream)]"
               aria-label="Search furniture catalog"
               title="Search"
             >
-              <SearchIcon className="w-5 h-5" />
+              <SearchIcon className="w-4 h-4 xl:w-5 xl:h-5" />
             </button>
 
             {/* Desktop Enquiry CTA */}
             <Link
               to="/contact"
-              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-ivory)] bg-[var(--color-espresso)] hover:bg-[var(--color-walnut)] rounded-sm transition-all duration-300 shadow-sm hover:shadow"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 xl:px-4 xl:py-2 text-[11px] xl:text-xs font-semibold uppercase tracking-wider text-[var(--color-ivory)] bg-[var(--color-espresso)] hover:bg-[var(--color-walnut)] rounded-sm transition-all duration-300 shadow-sm hover:shadow whitespace-nowrap flex-shrink-0"
             >
               <MessageSquare className="w-3.5 h-3.5 text-[var(--color-gold)]" />
               <span>Enquire</span>
