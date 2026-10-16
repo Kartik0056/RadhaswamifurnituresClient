@@ -40,12 +40,12 @@ const siteConfig = {
   address: {
     enabled: true,
     showroomName: 'Radha Swami Furnitures Showroom',
-    line1: 'Furniture Market, Kirti Nagar',
-    line2: 'New Delhi, Delhi 110015',
-    city: 'New Delhi',
-    state: 'Delhi',
+    line1: 'Ferozepur Road (Near Model Town)',
+    line2: 'Ludhiana, Punjab 141001',
+    city: 'Ludhiana',
+    state: 'Punjab',
     country: 'India',
-    pincode: '110015',
+    pincode: '141001',
     mapEmbedUrl: '', // Optional Google Maps embed URL
   },
 
@@ -154,7 +154,7 @@ const siteConfig = {
     {
       id: 1,
       name: 'Ananya S.',
-      location: 'New Delhi',
+      location: 'Ludhiana',
       text: 'The Sheesham dining table transformed our family dining room. The wood grain is magnificent, and the finish is silky smooth.',
       rating: 5,
       isSampleData: true,
@@ -162,7 +162,7 @@ const siteConfig = {
     {
       id: 2,
       name: 'Rajesh M.',
-      location: 'Gurugram',
+      location: 'Chandigarh',
       text: 'Finding handcrafted furniture with this level of structural integrity and comfort is rare. The team made the whole consultation effortless.',
       rating: 5,
       isSampleData: true,
@@ -170,7 +170,7 @@ const siteConfig = {
     {
       id: 3,
       name: 'Priya K.',
-      location: 'Noida',
+      location: 'Jalandhar',
       text: 'The wardrobe joinery and sliding mechanism are whisper quiet. It brings real architectural warmth to our bedroom sanctuary.',
       rating: 5,
       isSampleData: true,
@@ -202,7 +202,7 @@ const siteConfig = {
     {
       question: 'What are your delivery services and areas?',
       answer:
-        'We offer white-glove delivery and on-site assembly across Delhi NCR and can coordinate secure transport to major destinations across India. Specific timelines and arrangements are provided during order enquiry.',
+        'We offer white-glove delivery and on-site assembly across Ludhiana, Punjab, and the Tricity region, and can coordinate secure transport to destinations across India. Specific timelines and arrangements are provided during order enquiry.',
     },
     {
       question: 'How should I care for solid wood furniture?',

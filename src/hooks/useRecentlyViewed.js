@@ -1,10 +1,23 @@
 import { useState, useEffect, useCallback } from 'react';
 
 /**
- * Track recently viewed products in localStorage.
+ * Secure local tracking for recently viewed products.
+ * Includes schema validation and sanitize guards to prevent corrupted or malicious localStorage payloads.
  */
 const STORAGE_KEY = 'rsf_recently_viewed';
-const MAX_ITEMS = 10;
+const MAX_ITEMS = 8;
+
+function validateRecentlyViewedItem(item) {
+  return (
+    item &&
+    typeof item === 'object' &&
+    typeof item.id === 'string' &&
+    typeof item.slug === 'string' &&
+    typeof item.name === 'string' &&
+    typeof item.price === 'number' &&
+    (!item.thumbnail || typeof item.thumbnail === 'string')
+  );
+}
 
 export function useRecentlyViewed() {
   const [items, setItems] = useState([]);
@@ -12,30 +25,43 @@ export function useRecentlyViewed() {
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) setItems(JSON.parse(stored));
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          // Strictly validate every item to prevent stored XSS or corrupt states
+          const sanitized = parsed.filter(validateRecentlyViewedItem).slice(0, MAX_ITEMS);
+          setItems(sanitized);
+        }
+      }
     } catch {
-      // Silent — localStorage may be unavailable
+      // Clear corrupt entry
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // Silent
+      }
     }
   }, []);
 
   const addProduct = useCallback((product) => {
+    if (!product || !product.id || !product.slug) return;
+
     setItems((prev) => {
       const filtered = prev.filter((p) => p.id !== product.id);
-      const updated = [
-        {
-          id: product.id,
-          slug: product.slug,
-          name: product.name,
-          thumbnail: product.thumbnail,
-          price: product.price,
-        },
-        ...filtered,
-      ].slice(0, MAX_ITEMS);
+      const cleanItem = {
+        id: String(product.id).trim(),
+        slug: String(product.slug).trim(),
+        name: String(product.name).slice(0, 100),
+        thumbnail: product.thumbnail || product.images?.[0] || '',
+        price: Number(product.price) || 0,
+      };
+
+      const updated = [cleanItem, ...filtered].slice(0, MAX_ITEMS);
 
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
       } catch {
-        // Silent
+        // LocalStorage quota exceeded or disabled
       }
 
       return updated;

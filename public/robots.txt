@@ -1,4 +1,20 @@
+# Robots.txt for Radha Swami Furnitures (Ludhiana)
 User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*?*price=
+Disallow: /*?*sort=
+
+# Specific bot directives for rich indexing
+User-agent: Googlebot
+Allow: /
+Allow: /*.js
+Allow: /*.css
+Allow: /*.webp
+Allow: /*.jpg
+Allow: /*.png
+
+User-agent: Googlebot-Image
 Allow: /
 
 Sitemap: https://radhaswamifurnitures.com/sitemap.xml
