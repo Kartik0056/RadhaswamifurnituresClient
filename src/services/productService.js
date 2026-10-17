@@ -14,6 +14,9 @@ import categories from '../data/categories';
 import collections from '../data/collections';
 import apiClient from './apiClient';
 
+// Module-level fallback to guarantee no ReferenceError
+const products = defaultProducts;
+
 const CATALOG_STORAGE_KEY = 'rsf_catalog_products';
 
 function getActiveProducts() {
@@ -257,6 +260,7 @@ export function getAvailableColours() {
  * Get price range across all products.
  */
 export function getPriceRange() {
+  const products = getActiveProducts();
   if (products.length === 0) return { min: 0, max: 0 };
   const prices = products.map((p) => p.price);
   return { min: Math.min(...prices), max: Math.max(...prices) };
@@ -268,6 +272,7 @@ export function getPriceRange() {
  * Get all categories.
  */
 export function getCategories() {
+  const products = getActiveProducts();
   return categories
     .map((cat) => ({
       ...cat,
@@ -280,6 +285,7 @@ export function getCategories() {
  * Get a single category by slug.
  */
 export function getCategoryBySlug(slug) {
+  const products = getActiveProducts();
   const cat = categories.find((c) => c.slug === slug);
   if (!cat) return null;
   return {
