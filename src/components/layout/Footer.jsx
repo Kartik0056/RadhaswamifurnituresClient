@@ -142,9 +142,7 @@ export default function Footer() {
                       {siteConfig.address.showroomName}
                     </p>
                     <p>{siteConfig.address.line1}</p>
-                    <p>
-                      {siteConfig.address.city}, {siteConfig.address.pincode}
-                    </p>
+                    {siteConfig.address.line2 && <p>{siteConfig.address.line2}</p>}
                   </div>
                 </div>
               )}
@@ -196,13 +194,13 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-6 text-[0.72rem]">
             <Link to="/about" className="hover:text-[var(--color-sand)] transition-colors">
-              About Radha Swami Furnitures
+              About Radha Swami Furniture
             </Link>
             <Link to="/contact" className="hover:text-[var(--color-sand)] transition-colors">
               Custom Orders
             </Link>
-            <Link to="/contact" className="hover:text-[var(--color-sand)] transition-colors">
-              Showroom Visit
+            <Link to="/admin" className="hover:text-[var(--color-gold)] transition-colors font-medium">
+              Admin & CRM
             </Link>
           </div>
         </div>

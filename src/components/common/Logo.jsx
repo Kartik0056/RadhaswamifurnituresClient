@@ -6,16 +6,19 @@ export default function Logo({ variant = 'default', className = '' }) {
 
   // If an image logo is configured, display it
   if (brand.logoImage) {
+    const isLight = variant === 'light';
+    const imageSrc = isLight ? (brand.logoImageLight || brand.logoImage) : brand.logoImage;
+
     return (
       <Link
         to="/"
-        className={`inline-flex items-center focus-visible:outline-none ${className}`}
+        className={`inline-flex items-center focus-visible:outline-none transition-transform duration-200 hover:scale-[1.02] ${className}`}
         aria-label={`${brand.name} - Home`}
       >
         <img
-          src={brand.logoImage}
+          src={imageSrc}
           alt={brand.name}
-          className="h-10 md:h-12 w-auto object-contain"
+          className="h-10 sm:h-11 md:h-12 w-auto object-contain drop-shadow-sm"
         />
       </Link>
     );

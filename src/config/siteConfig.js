@@ -11,37 +11,41 @@
 const siteConfig = {
   // ─── Brand Identity ───────────────────────────────────────────────
   brand: {
-    name: 'Radha Swami Furnitures',
+    name: 'Radha Swami Furniture',
     primaryText: 'RADHA SWAMI',
-    subText: 'FURNITURES',
-    tagline: 'Furniture That Makes a House Feel Like Home',
-    heroHeadline: 'Furniture That Makes a House Feel Like Home.',
+    subText: 'FURNITURE',
+    tagline: 'Deals In : All Types of Fancy Wooden Furniture',
+    heroHeadline: 'All Types of Fancy Wooden Furniture.',
     heroSubheadline:
-      'Discover thoughtfully designed furniture that brings comfort, character, and timeless elegance to your living spaces.',
+      'Discover handcrafted solid wood luxury furniture that brings comfort, character, and timeless elegance to your living spaces.',
     primaryCta: 'Explore Our Collection',
     secondaryCta: 'Enquire Now',
     description:
-      'Discover thoughtfully designed furniture that brings comfort, character, and timeless elegance to your living spaces.',
-    logoImage: null, // Path to image logo if provided later, or null for typographic wordmark
+      'Deals in all types of fancy wooden furniture. Handcrafted sofas, luxury beds, dining sets, and bespoke woodwork in Ludhiana.',
+    logoImage: '/logo.svg',
+    logoImageLight: '/logo-light.svg',
+    logoEmblem: '/logo.jpg',
   },
 
   // ─── Contact Information (Editable Defaults) ──────────────────────
   contact: {
-    phone: '+91 98765 43210',
-    phoneRaw: '919876543210', // Used for WhatsApp links (country code + number, no + or spaces)
-    email: 'contact@radhaswamifurnitures.com',
+    phone: '+91 90128 32577', // Primary contact number (upper number from card)
+    phoneRaw: '+919012832577', // Used for tel: links
+    phoneAlt: '+91 96753 34435', // Secondary contact number (lower number from card)
+    phoneAltRaw: '+919675334435',
+    email: 'contact@radhaswamifurniture.com',
     whatsappEnabled: true,
-    whatsappNumber: '919876543210', // WhatsApp business number
+    whatsappNumber: '919012832577', // WhatsApp business number (upper number: 90128-32577)
     whatsappDefaultMessage:
-      'Hello Radha Swami Furnitures! I am interested in your furniture collection and would like more information.',
+      'Hello Radha Swami Furniture! I am interested in your fancy wooden furniture collection and would like more information.',
   },
 
   // ─── Business Address & Showroom (Editable Defaults) ──────────────
   address: {
     enabled: true,
-    showroomName: 'Radha Swami Furnitures Showroom',
-    line1: 'Ferozepur Road (Near Model Town)',
-    line2: 'Ludhiana, Punjab 141001',
+    showroomName: 'Radha Swami Furniture Showroom',
+    line1: 'Bachan Singh Marg, Main Market Jandu Enclave',
+    line2: 'Vill. Baloke, Ludhiana, Punjab 141001',
     city: 'Ludhiana',
     state: 'Punjab',
     country: 'India',
@@ -70,9 +74,9 @@ const siteConfig = {
   // ─── Announcement Bar ─────────────────────────────────────────────
   announcement: {
     enabled: true,
-    text: 'Bespoke Custom Orders & In-Store Consultations Available — Visit Us Today',
+    text: 'Deals In : All Types of Fancy Wooden Furniture — Showroom at Bachan Singh Marg, Ludhiana',
     link: '/contact',
-    linkText: 'Enquire Now',
+    linkText: 'Visit & Enquire',
   },
 
   // ─── Newsletter ───────────────────────────────────────────────────
@@ -84,10 +88,10 @@ const siteConfig = {
   // ─── SEO & Meta ───────────────────────────────────────────────────
   seo: {
     siteUrl: 'https://radhaswamifurnitures.com',
-    defaultTitle: 'Radha Swami Furnitures — Premium Handcrafted Furniture',
+    defaultTitle: 'Radha Swami Furniture — All Types of Fancy Wooden Furniture Ludhiana',
     defaultDescription:
-      'Discover thoughtfully designed handcrafted furniture that brings comfort, character, and timeless elegance to your living spaces.',
-    ogImage: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80',
+      'Discover handcrafted fancy wooden furniture at Radha Swami Furniture, Bachan Singh Marg, Ludhiana. Solid Sheesham & Teak sofas, luxury beds, dining sets, and custom orders.',
+    ogImage: '/logo.jpg',
     twitterHandle: '',
   },
 
@@ -190,9 +194,9 @@ const siteConfig = {
         'Our primary collection is made from solid Sheesham (Indian Rosewood), Teak, and seasoned Mango Wood, renowned for their grain richness and generational durability.',
     },
     {
-      question: 'Can I visit the Radha Swami Furnitures showroom?',
+      question: 'Can I visit the Radha Swami Furniture showroom?',
       answer:
-        'Yes, our showroom is open Monday through Saturday from 10:00 AM to 8:00 PM and Sunday from 11:00 AM to 6:00 PM. We welcome walk-ins and scheduled consultations.',
+        'Yes! Our showroom is located at Bachan Singh Marg, Main Market Jandu Enclave, Vill. Baloke, Ludhiana. We are open Monday through Saturday from 10:00 AM to 8:00 PM and Sunday from 11:00 AM to 6:00 PM. We welcome walk-ins and scheduled custom furniture consultations.',
     },
     {
       question: 'How do I place an enquiry or order?',

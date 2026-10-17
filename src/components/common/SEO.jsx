@@ -57,7 +57,7 @@ export default function SEO({
     paymentAccepted: 'Cash, Credit Card, UPI, Net Banking',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: siteConfig.address.line1,
+      streetAddress: `${siteConfig.address.line1}, ${siteConfig.address.line2}`,
       addressLocality: siteConfig.address.city,
       addressRegion: siteConfig.address.state,
       postalCode: siteConfig.address.pincode,

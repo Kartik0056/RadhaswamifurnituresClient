@@ -4,6 +4,7 @@ import { X, Send, MessageCircle, CheckCircle2, ShieldCheck } from 'lucide-react'
 import { formatPrice, buildProductEnquiryMessage, generateWhatsAppUrl } from '../../utils/helpers';
 import siteConfig from '../../config/siteConfig';
 import { useBodyScrollLock } from '../../hooks/useAccessibility';
+import enquiryService from '../../services/enquiryService';
 
 export default function ProductEnquiryModal({ product, isOpen, onClose }) {
   const [formData, setFormData] = useState({
@@ -43,12 +44,32 @@ export default function ProductEnquiryModal({ product, isOpen, onClose }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
+    }
+
+    // Persist lead directly into CRM system & backend API
+    try {
+      await enquiryService.submitEnquiry({
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        subject: `Product Enquiry: ${product?.name}`,
+        message: formData.message || `Customer enquired about ${product?.name} (Qty: ${formData.quantity || 1})`,
+        productId: product?.id || product?.slug,
+        productName: product?.name,
+        preferredContact: formData.preferredContact || 'WhatsApp',
+        source: 'product_modal',
+        priority: 'high',
+        dealValue: Number(product?.price) || 0,
+        timberPreference: product?.material || '',
+      });
+    } catch (err) {
+      console.warn('CRM lead submission notice:', err);
     }
 
     // Build the prefilled WhatsApp message
@@ -217,7 +238,7 @@ export default function ProductEnquiryModal({ product, isOpen, onClose }) {
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          placeholder="+91 98765 43210"
+                          placeholder="+91 90128 32577"
                           className={`w-full px-3 py-2 bg-white rounded border text-sm text-[var(--color-espresso)] focus:outline-none focus:border-[var(--color-gold)] transition-colors ${
                             errors.phone ? 'border-red-400 bg-red-50/30' : 'border-[var(--color-sand)]'
                           }`}

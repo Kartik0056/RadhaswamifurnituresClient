@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 90" width="420" height="90">
+  <defs>
+    <linearGradient id="goldLinear" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBF0B9"/>
+      <stop offset="30%" stop-color="#E5C158"/>
+      <stop offset="60%" stop-color="#C59B27"/>
+      <stop offset="100%" stop-color="#916B15"/>
+    </linearGradient>
+    <linearGradient id="crestDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#241C16"/>
+      <stop offset="100%" stop-color="#140E0A"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Left Emblem Group (X=8, Y=5, W=80, H=80) -->
+  <g transform="translate(10, 5)">
+    <!-- Shield / Badge -->
+    <rect width="80" height="80" rx="18" fill="url(#crestDark)" filter="url(#shadow)"/>
+    <rect x="2.5" y="2.5" width="75" height="75" rx="16" fill="none" stroke="url(#goldLinear)" stroke-width="1.8" stroke-opacity="0.85"/>
+    <rect x="5.5" y="5.5" width="69" height="69" rx="13" fill="none" stroke="url(#goldLinear)" stroke-width="0.75" stroke-opacity="0.4" stroke-dasharray="2 2"/>
+
+    <!-- Crown Accent -->
+    <path d="M28 22 L33 16 L40 21 L47 16 L52 22 L49 25 L31 25 Z" fill="url(#goldLinear)"/>
+    <circle cx="33" cy="15" r="1.5" fill="#FFF"/>
+    <circle cx="40" cy="13.5" r="1.8" fill="#FFF"/>
+    <circle cx="47" cy="15" r="1.5" fill="#FFF"/>
+
+    <!-- Interlocking RS Monogram -->
+    <!-- R -->
+    <path d="M26 29 H38 C43.5 29 46 32 46 36 C46 39.5 43 42 38.5 42.5 L46.5 56 H39.5 L32.5 44 H31 V56 H26 V29 Z M31 33.5 V39.5 H37.5 C40.5 39.5 41.5 38.2 41.5 36 C41.5 34 40.5 33.5 37.5 33.5 H31 Z" fill="url(#goldLinear)"/>
+
+    <!-- Interlocking S -->
+    <path d="M54 41 C51.5 37.5 47 36.5 43 37 L43.5 41 C46 40.5 49 41.2 50.2 42.8 C51.5 44.5 50.2 47 46.5 48 C41.5 49.5 38 51.5 38 55.5 C38 60.5 43 63 48.5 61.8 C51.5 61.2 54 59.2 55.2 57.2 L52 54.8 C50.8 56.4 49.2 57.5 47.5 57.8 C44.5 58 42.8 56.5 42.8 55 C42.8 53 45.2 52.2 49 51 C53.5 49.5 56 46.5 54 41 Z" fill="url(#goldLinear)" opacity="0.95"/>
+  </g>
+
+  <!-- Typography Group -->
+  <!-- Brand Name: RADHA SWAMI -->
+  <text x="108" y="44" font-family="'Playfair Display', Georgia, serif" font-size="28" font-weight="700" letter-spacing="3.5" fill="#1C140E">
+    RADHA SWAMI
+  </text>
+
+  <!-- Gold Ornamental Divider Line with Diamond -->
+  <line x1="110" y1="54" x2="235" y2="54" stroke="url(#goldLinear)" stroke-width="1.2"/>
+  <polygon points="243,54 246,50 249,54 246,58" fill="url(#goldLinear)"/>
+  <line x1="257" y1="54" x2="385" y2="54" stroke="url(#goldLinear)" stroke-width="1.2"/>
+
+  <!-- Subtitle: FURNITURE -->
+  <text x="110" y="72" font-family="'Inter', Helvetica, sans-serif" font-size="12" font-weight="600" letter-spacing="7" fill="#C59B27">
+    FURNITURE
+  </text>
+
+  <!-- Location Tagline -->
+  <text x="260" y="72" font-family="'Inter', Helvetica, sans-serif" font-size="8.5" font-weight="500" letter-spacing="2" fill="#887B70">
+    • LUDHIANA
+  </text>
+</svg>

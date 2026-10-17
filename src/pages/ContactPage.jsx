@@ -9,10 +9,12 @@ import {
   CheckCircle2,
   ChevronDown,
   Sparkles,
+  ExternalLink,
 } from 'lucide-react';
 import SEO from '../components/common/SEO';
 import siteConfig from '../config/siteConfig';
 import { generateWhatsAppUrl } from '../utils/helpers';
+import enquiryService from '../services/enquiryService';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -51,7 +53,7 @@ export default function ContactPage() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) {
@@ -59,8 +61,23 @@ export default function ContactPage() {
       return;
     }
 
+    // Persist lead directly into CRM system & backend API
+    try {
+      await enquiryService.submitEnquiry({
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        source: 'contact_page',
+        priority: 'high',
+      });
+    } catch (err) {
+      console.warn('CRM lead submission notice:', err);
+    }
+
     // Build WhatsApp message for direct connection
-    let msg = `Hello Radha Swami Furnitures! I am reaching out via your website contact form:\n\n`;
+    let msg = `Hello Radha Swami Furniture! I am reaching out via your website contact form:\n\n`;
     msg += `Name: ${formData.name}\n`;
     msg += `Phone: ${formData.phone}\n`;
     if (formData.email) msg += `Email: ${formData.email}\n`;
@@ -143,6 +160,17 @@ export default function ContactPage() {
                         <br />
                         {siteConfig.address.line2}
                       </p>
+                      <a
+                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                          `${siteConfig.brand.name}, ${siteConfig.address.line1}, ${siteConfig.address.line2}`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-[11px] font-semibold text-[var(--color-gold)] hover:underline mt-2.5"
+                      >
+                        <span>Open in Google Maps</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
                     </div>
                   </div>
                 )}
@@ -158,10 +186,24 @@ export default function ContactPage() {
                       </h4>
                       <a
                         href={`tel:${siteConfig.contact.phoneRaw}`}
-                        className="text-xs text-[var(--color-stone)] hover:text-[var(--color-espresso)] mt-1 inline-block"
+                        className="text-xs font-semibold text-[var(--color-espresso)] hover:text-[var(--color-gold)] mt-1 block"
                       >
-                        {siteConfig.contact.phone}
+                        {siteConfig.contact.phone}{' '}
+                        <span className="text-[10px] text-emerald-800 bg-emerald-100 font-medium px-1.5 py-0.5 rounded ml-1">
+                          Primary
+                        </span>
                       </a>
+                      {siteConfig.contact.phoneAlt && (
+                        <a
+                          href={`tel:${siteConfig.contact.phoneAltRaw}`}
+                          className="text-xs text-[var(--color-stone)] hover:text-[var(--color-espresso)] mt-1 block"
+                        >
+                          {siteConfig.contact.phoneAlt}{' '}
+                          <span className="text-[10px] text-[var(--color-stone)]/70 font-normal">
+                            (Alternate)
+                          </span>
+                        </a>
+                      )}
                     </div>
                   </div>
                 )}
@@ -291,7 +333,7 @@ export default function ContactPage() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+91 98765 43210"
+                        placeholder="+91 90128 32577"
                         className={`w-full px-3.5 py-2.5 bg-white rounded border text-sm text-[var(--color-espresso)] focus:outline-none focus:border-[var(--color-gold)] ${
                           errors.phone ? 'border-red-400 bg-red-50/20' : 'border-[var(--color-sand)]'
                         }`}
